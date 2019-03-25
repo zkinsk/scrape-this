@@ -1,0 +1,11 @@
+#content-box{
+  display: flex;
+}
+
+#side-menu{
+  background-color: grey;
+  height: 100vh;
+  width: 40%;
+  position: sticky;
+  top: 0;
+}

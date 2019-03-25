@@ -29,7 +29,7 @@ app.set("view engine", "handlebars");
 
 require("./routes/scrapeRoutes")(app);
 require("./routes/dbRoutes")(app);
-// require("./routes/htmlRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");

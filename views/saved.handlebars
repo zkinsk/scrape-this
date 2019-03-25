@@ -1,0 +1,18 @@
+<div class="row justify-content-beginning pl-5">
+  <div class="col-10">
+    {{#each articles as |article|}}
+      <div class="card mb-3 shadow">
+        <div class="card-header d-flex w-100 justify-content-between">
+        <a href="https://www.singletracks.com/{{article.tag}}" target="_blank"><h5 class="mb-1">{{article.title}}</h5></a>
+        {{#unless article.favorite}}
+          <button type="button" class="btn btn-warning btn-sm save-button" data-artid = "{{article.artId}}" data-favorite="true"><i class="far fa-save"></i></button>
+        {{/unless}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{article.text}}</p>
+          {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
