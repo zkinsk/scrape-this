@@ -1,11 +1,21 @@
 #content-box{
-  display: flex;
+  /* display: flex; */
+}
+body {
+  position: relative;
 }
 
 #side-menu{
+  float: left;
   background-color: grey;
   height: 100vh;
-  width: 40%;
+  width: 20%;
   position: sticky;
   top: 0;
+}
+
+#main-content {
+  /* width: 60%; */
+  /* position: absolute; */
+  /* right: 0; */
 }

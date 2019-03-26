@@ -1,20 +1,17 @@
 var express = require("express");
-// var mongoose = require("mongoose");
-
-// var axios = require("axios");
-// var cheerio = require("cheerio");
 var exphbs = require("express-handlebars");
-
-// var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
 
 var app = express();
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
+var mongoose = require("mongoose");
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/singletrackDB";
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
 
 app.engine(
   "handlebars",
@@ -24,12 +21,13 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-// mongoose.connect("mongodb://localhost/singletrackDB", { useNewUrlParser: true });
+const scrape = require("./routes/scrapeRoutes");
+const api = require("./routes/apiRoutes");
+const html = require("./routes/htmlRoutes");
 
-
-require("./routes/scrapeRoutes")(app);
-require("./routes/dbRoutes")(app);
-require("./routes/htmlRoutes")(app);
+app.use('/scrape', scrape);
+app.use('/api', api);
+app.use('/', html);
 
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
