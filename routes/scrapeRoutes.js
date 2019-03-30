@@ -20,6 +20,8 @@ router.get("/", function(req, res) {// router to scrape singletrack web page
         result.title = $(this).find("h2 a").text();
         result.tag = $(this).find("h2 a").attr("href");
         result.text = $(this).find(".nf_preview_text").text();
+        result.image = $(this).find("a img").attr("src");
+        console.log("img: " , result.img);
         results.push(result);
         if (!articleIds.includes(result.artId)){
           db.Article.create(result)
