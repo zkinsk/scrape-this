@@ -1,13 +1,45 @@
-#content-box{
-  /* display: flex; */
+.jumbotron{
+  color: red;
 }
+.jumbotron h1,
+.jumbotron p {
+  text-shadow: 
+  1px 1px .1rem black,
+  1px -1px .1rem black,
+  -1px -1px .1rem black,
+  -1px 1px .1rem black;
+}
+
 body {
+  /* transition: all 1s; */
   position: relative;
+}
+
+#imgBack {
+  width:100%;
+  height:100%;
+  display:none;
+  position:fixed;
+  /* z-index:-1; */
+}
+
+/* .backGround{
+  height: 100vh;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+} */
+
+.jumbotron {
+  background-image: url("../images/panorama-mtb.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 #side-menu{
   float: left;
-  background-color: grey;
+  background-color: rgb(128, 128, 128, .75);
   min-height: 100vh;
   width: 20%;
   position: sticky;
@@ -55,14 +87,9 @@ body {
 #side-menu.active button {
   text-align: center;
 }
-
-
-#main-content {
-  /* width: 60%; */
-  /* position: absolute; */
-  /* right: 0; */
+.card{
+  background-color: rgba(255, 255, 255, 0.65);
 }
-
 .card-body img {
   float: left;
   max-width: 25%;

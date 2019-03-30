@@ -1,16 +1,16 @@
 <div class="row justify-content-beginning pl-5">
-  <div class="col-10">
+  <div class="col-12 col-md-10">
     {{#each articles as |article|}}
       <div class="card mb-3 shadow">
         <div class="card-header">
           <div class="row">
             <div class="col-12 col-md-9">
-            <a href="https://www.singletracks.com/{{article.tag}}" target="_blank"><h5 class="mb-1">{{article.title}}</h5></a>
+              <a href="https://www.singletracks.com/{{article.tag}}" target="_blank"><h5 class="mb-1">{{article.title}}</h5></a>
+              </div>
+              <div class="col save-page-buttons order-first order-md-last text-left text-md-right">
+                <button type="button" class="btn btn-warning btn-sm open-notes-button" data-artid = "{{article.artId}}">Notes</button>
+                <button type="button" class="btn btn-warning btn-sm save-button" data-artid = "{{article.artId}}" data-favorite="false">Remove</button>
             </div>
-            <div class="col save-page-buttons order-first order-md-last text-left text-md-right">
-              <button type="button" class="btn btn-warning btn-sm open-notes-button" data-artid = "{{article.artId}}">Notes</button>
-              <button type="button" class="btn btn-warning btn-sm save-button" data-artid = "{{article.artId}}" data-favorite="false">Remove</button>
-          </div>
           </div>
         </div>
         <div class="card-body clearfix">
