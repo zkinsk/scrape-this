@@ -5,7 +5,7 @@
         <div class="card-header d-flex w-100 justify-content-between">
         <a href="https://www.singletracks.com/{{article.tag}}" target="_blank"><h5 class="mb-1">{{article.title}}</h5></a>
         {{#unless article.favorite}}
-          <button type="button" class="btn btn-warning btn-sm save-button" data-artid = "{{article.artId}}" data-favorite="true"><i class="far fa-save"></i></button>
+          <button type="button" class="btn btn-warning btn-sm save-button align-self-start" data-artid = "{{article.artId}}" data-favorite="true"><i class="far fa-save"></i></button>
         {{/unless}}
         </div>
         <div class="card-body {{#if article.favorite}}bg-success{{/if}}">

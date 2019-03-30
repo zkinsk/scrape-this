@@ -8,7 +8,7 @@ body {
 #side-menu{
   float: left;
   background-color: grey;
-  height: 100vh;
+  min-height: 100vh;
   width: 20%;
   position: sticky;
   top: 0;
@@ -19,3 +19,32 @@ body {
   /* position: absolute; */
   /* right: 0; */
 }
+
+/* ************
+Note Modal
+************ */
+  #note-area {
+    display: flexbox;
+  }
+  #note-area .delete-note-button{
+    margin: 0 0 0 auto;
+  }
+  .note {
+    border: lightgray solid .1rem;
+    padding: .5rem;
+    margin-bottom: .5rem;
+  }
+
+/* Note Modal */
+/* ************ */
+
+
+/* ************
+Saved Items
+************ */
+  .save-page-buttons button {
+    margin-left: 0.2rem;
+  }
+
+/* Saved Items */
+/* ************ */

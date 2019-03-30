@@ -9,10 +9,8 @@ var db = require("../models");
 router.get("/", function(req, res) {// router to scrape singletrack web page
   db.Article.find({}, "artId")
   .then(function(artIds){
-    let articleIds = []
-    artIds.forEach(article =>{
-      articleIds.push(article.artId);
-    });
+    let articleIds = artIds.map(data => data.artId);
+    
     axios.get("https://www.singletracks.com/").then(function(response) {
       var $ = cheerio.load(response.data);
       let results = [];
@@ -26,7 +24,7 @@ router.get("/", function(req, res) {// router to scrape singletrack web page
         if (!articleIds.includes(result.artId)){
           db.Article.create(result)
             .then(function(dbArticle) {
-              console.log(dbArticle);
+              // console.log(dbArticle);
             })
             .catch(function(err) {
               console.log(err);

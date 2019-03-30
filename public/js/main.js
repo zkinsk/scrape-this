@@ -1,40 +1,106 @@
+
 function buttonClicks(){
-$(".save-button").click(function(){
-  artId = $(this).data("artid");
-  favorite = $(this).data("favorite")
-  console.log(favorite);
-  $.ajax({
-    url: "/api/articles/favorites/" + artId + "/" + favorite,
-    type: "PATCH", 
-  }).then( function(res){
-    // console.log(res);
-    location.reload();
-  });//end of ajax promise
-});
+  $(".save-button").click(function(){
+    artId = $(this).data("artid");
+    favorite = $(this).data("favorite")
+    // console.log(favorite);
+    $.ajax({
+      url: "/api/articles/favorites/" + artId + "/" + favorite,
+      type: "PATCH", 
+    }).then( function(res){
+      // console.log(res);
+      location.reload();
+    });//end of ajax promise
+  });
 
-$("#scrape-button").click(function(){
-  $.ajax({
-    url: "/scrape",
-    type: 'GET'
+  $("#scrape-button").click(function(){
+    $.ajax({
+      url: "/scrape",
+      type: 'GET'
+    })
+    .then(function(res){
+      location.reload();
+    })
+  });//end scrape button
+
+  $("#clear-articles-button").click(function(){
+    $.ajax({
+      url: '/api/articles',
+      type: "DELETE"
+    }).then(function(res){
+      location.reload();
+    })
+  })//
+
+  $(".open-notes-button").click(function(){
+    let artId = $(this).data("artid");
+    getNotes(artId);
+    $(".input-group-prepend").empty();
+    let addNoteButton = /*html*/`
+    <button type="button" id="add-note-button-modal" data-artid="${artId}"class="btn btn-light"><span class="input-group-text">Add Note</span></button>
+    `;
+    $(".input-group-prepend").append(addNoteButton);
+    $("#add-note-button-modal").attr("data-artid", artId);
+    $("#scrape-modal .modal-title").text("Notes for :" + artId);
+    $('#scrape-modal').modal();
+  });
+
+  $(".modal-body").on("click", "#add-note-button-modal", function(){
+    let noteBody = $("#note-input").val()
+    let artId = $(this).data("artid");
+    console.log(artId);
+    if (noteBody){
+      $.ajax({
+        url: '/api/note/' + artId,
+        type: 'POST',
+        data: {
+          artId: artId,
+          body: noteBody
+        }
+      })
+      .then(function(data){
+        $("#note-input").val("");
+        getNotes(artId);
+      })
+    }
+  })//add-note-button-modal
+
+  $("#note-area").on("click",".delete-note-button", function(){
+    let noteId = $(this).data("note-id");
+    let artId = $(this).data("artid");
+    $(this).parent().remove();
+    $.ajax(
+      {
+        url: 'api/note/' + artId + "/" + noteId,
+        type: 'DELETE',
+      }
+    )
+    .then(res => {
+      console.log(res);
+    })
   })
-  .then(function(res){
-    location.reload();
-  })
-});//end scrape button
-
-$("#clearArticles-button").click(function(){
-  
-  location.reload();
-})
-
-$(".add-note-button").click(function(){
-  $('#scrape-modal').modal();
-  // location.reload();
-})
 
 }//end button clicks
 
 
+function getNotes(artId){
+  $.ajax({
+    url: "/api/article/" + artId,
+    type: "GET"
+  })
+  .then(data => {
+    drawNotes(data.notes);
+  })
+  .catch(err => {console.log(err)})
+};
+
+function drawNotes(notes){
+  $("#note-area").empty();
+  notes.forEach(note =>{
+    let newNote = new Note(note);
+    newNote.drawNote();
+  })
+};
 
 $(document).ready(function(){
  buttonClicks()
