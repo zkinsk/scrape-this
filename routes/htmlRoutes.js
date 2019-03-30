@@ -7,7 +7,7 @@ var db = require("../models");
   
 router.get("/favorites", function(req, res) {//get favorite articles
   db.Article.find({'favorite': true}).then(function(articles){
-    res.render("saved", {articles: articles});
+    res.render("saved", {articles: articles, title: "Saved", saved: "true"});
   })
   .catch(function(err) {
     res.json(err);
@@ -16,7 +16,7 @@ router.get("/favorites", function(req, res) {//get favorite articles
 
 router.get("/", function(req, res) {//get all articles
   db.Article.find({}).then(function(articles){
-    res.render("landing", {articles: articles});
+    res.render("landing", {articles: articles, title: "Scape This!", home:"true"});
   })
   .catch(function(err) {
     res.json(err);

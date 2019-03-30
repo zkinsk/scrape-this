@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Scrape This</title>
+  <title>{{title}}</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8"/>
@@ -48,16 +48,21 @@
       <p class="lead">SingleTrack Scraper and MongoDB</p>
     </div>
   </div>
-  <div id="content-box">
+  <div id="content-box" class="wrapper">
     <div id="side-menu">
+      <div class="side-menu-header">
+    <h3>Scrape This</h3>
+    <strong>S.T.</strong>
+    </div>
       <div class="container pt-5">
-        <a href="/" role="button" class="btn btn-info btn-lg btn-block">Home</button>
-        <a href="/favorites" role="button" class="btn btn-info btn-lg btn-block">Saved Articles</a>
+        <a href="/" role="button" class="btn btn-info btn-lg btn-block {{#if home}}active{{/if}}">Home</button>
+        <a href="/favorites" role="button" class="btn btn-info btn-lg btn-block {{#if saved}}active{{/if}}">Saved Articles</a>
         <button role="button" id="scrape-button" class="btn btn-info btn-lg btn-block">Scrape New Articles</button>
         <button type="button" id="clear-articles-button" class="btn btn-info btn-lg btn-block">Clear Articles</button>
       </div>
     </div>
     <div id="main-content" class="mt-2">
+      <button type="button" id="sidebarCollapse" class="btn btn-info ml-1"><i class="fas fa-align-left"></i></button>
     {{{body}}}
     </div>
   </div>
