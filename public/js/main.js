@@ -102,8 +102,26 @@ function drawNotes(notes){
   })
 };
 
+function scrollImage(){
+  $(window).scroll(function() {
+    if ($(this).scrollTop()>240)
+     {
+      $('#imgBack').fadeIn("fast");
+      $('.button-1').addClass("d-none");
+      $('.button-2').removeClass("d-none");
+     }
+    else
+     {
+      $('#imgBack').fadeOut("fast");
+      $('.button-2').addClass("d-none");
+      $('.button-1').removeClass("d-none");
+     }
+    })
+}
+
 $(document).ready(function(){
- buttonClicks()
+ buttonClicks();
+ scrollImage();
 
  $('#sidebarCollapse').on('click', function () {
   $('#side-menu').toggleClass('active');

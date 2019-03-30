@@ -12,14 +12,15 @@
             <div class="col order-first order-md-last text-left text-md-right">
               {{#unless article.favorite}}
                 <button type="button" class="btn btn-warning btn-sm save-button align-self-start" data-artid = "{{article.artId}}" data-favorite="true"><i class="far fa-save"></i></button>
+                {{!-- <button type="button" class="button-2 btn btn-outline-warning d-none btn-sm save-button align-self-start" data-artid = "{{article.artId}}" data-favorite="true"><i class="far fa-save"></i></button> --}}
               {{/unless}}
             </div>
           </div>
+        </div>
           <div class="card-body clearfix">
             {{#if article.image}}<a href="{{article.image}}"><img src="{{article.image}}"/></a>{{/if}}
             <p class="card-text">{{article.text}}</p>
           </div>
-        </div>
       </div>
     {{else}}
       <div class="card mb-3 shadow">
