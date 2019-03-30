@@ -1,3 +1,5 @@
+
+
 <div class="row justify-content-beginning pl-5">
   <div class="col-10">
     {{#each articles as |article|}}
@@ -10,7 +12,15 @@
         </div>
         <div class="card-body {{#if article.favorite}}bg-success{{/if}}">
           <p class="card-text">{{article.text}}</p>
-          {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+        </div>
+      </div>
+    {{else}}
+      <div class="card mb-3 shadow">
+        <div class="card-header d-flex w-100 justify-content-between">
+          <h4>Ooops..</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">There are no current articles - Scrape to find some more</p>
         </div>
       </div>
     {{/each}}

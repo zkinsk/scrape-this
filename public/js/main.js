@@ -19,7 +19,7 @@ function buttonClicks(){
       type: 'GET'
     })
     .then(function(res){
-      location.reload();
+      document.location.href = "/";
     })
   });//end scrape button
 
@@ -104,4 +104,8 @@ function drawNotes(notes){
 
 $(document).ready(function(){
  buttonClicks()
+
+ $('#sidebarCollapse').on('click', function () {
+  $('#side-menu').toggleClass('active');
+});
 })//end doc ready
