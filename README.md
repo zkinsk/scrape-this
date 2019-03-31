@@ -3,6 +3,8 @@
 - Stores selected info in a database for persistent retreival
 - Allows for comments/notes to be added to saved articles that are then accessible by everyone who visits the site
 
+**While viewing articles, make sure you scroll down - for a nice effect**
+
 
 ## Technologies: 
 
