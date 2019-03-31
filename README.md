@@ -1,7 +1,7 @@
 # scrape-this
 - nodeJs/express app that uses Cherio and Axio to srape info from the site [SingleTracks](https://www.singletracks.com/)
 - Stores selected info in a database for persistent retreival
-- Allows for comments/notes to be added to saved articles that are then acceible by everyone
+- Allows for comments/notes to be added to saved articles that are then accessible by everyone who visits the site
 
 
 ## Technologies: 
@@ -14,7 +14,8 @@
     - Cheeiro extracts target info from the raw code
   
 3. Mongo & Mongoose
-    - store the curated data extractec by Cheerio for later use
+    - store the curated data, extracted by Cheerio, for later use
+    - stores notes in an collection that is associated with the collection of articles
   
 4. Handlebars
     - pre-renders the HTML and sends it to the client
