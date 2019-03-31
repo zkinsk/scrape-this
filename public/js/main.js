@@ -83,7 +83,7 @@ function buttonClicks(){
   $('#sidebarCollapse').on('click', function () {//sidebar collapse
     $('#side-menu').toggleClass('active');
     let menuState = sessionStorage.getItem("menuState")
-    console.log("btn: " + menuState);
+    // console.log("btn: " + menuState);
     menuState = menuState === 'true';
     menuState = menuState? 'false' : 'true'
     sessionStorage.setItem("menuState", menuState);
@@ -128,10 +128,10 @@ function scrollImage(){
     })
 };
 
-function menuStateOnLoad(){
+function menuStateOnLoad(){ //remembers menu state on page refresh due to handlebars refresh when db changes
   let menuState = sessionStorage.getItem("menuState")
   menuState = menuState === 'true';
-  console.log("on load: " + menuState);
+  // console.log("on load: " + menuState);
   menuState?  $('#side-menu').addClass('active'):  $('#side-menu').removeClass('active')
 };
 

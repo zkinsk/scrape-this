@@ -33,6 +33,9 @@ body {
 
 /* sidebar menu
 ********************* */
+.transition {
+  transition: all 0.3s;
+}
 
 #side-menu{
   float: left;
@@ -41,7 +44,7 @@ body {
   width: 20%;
   position: sticky;
   top: 0;
-  transition: all 0.3s;
+  /* transition: all 0.3s; */
 }
 /* Shrinking the side-menu from 250px to 80px and center aligining its content*/
 #side-menu.active {
@@ -77,7 +80,7 @@ body {
 
 #side-menu.active a {
   text-align: center;
-  transition: all 0.3s;
+  /* transition: all 0.3s; */
 }
 
 #side-menu.active span {
