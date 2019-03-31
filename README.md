@@ -7,20 +7,20 @@
 ## Technologies: 
 
 1. nodeJs, express
-  - maintains my routes and html calls
+    - maintains my routes and html calls
   
 2. Axios & Cheerio
-  - Axios access the target site
-  - Cheeiro extracts target info from the raw code
+    - Axios access the target site
+    - Cheeiro extracts target info from the raw code
   
 3. Mongo & Mongoose
-  - store the curated data extractec by Cheerio for later use
+    - store the curated data extractec by Cheerio for later use
   
 4. Handlebars
-  - pre-renders the HTML and sends it to the client
+    - pre-renders the HTML and sends it to the client
   
 5. Bootstrap
-  - responsive css library to beautify the page and facilitate mobile responsiveness
+    - responsive css library to beautify the page and facilitate mobile responsiveness
   
 6. Heroku
-  - provides server space to spin up my nodejs app [Scrape This](https://scrape-this-sz.herokuapp.com/)
+    - provides server space to spin up my nodejs app [Scrape This](https://scrape-this-sz.herokuapp.com/)
