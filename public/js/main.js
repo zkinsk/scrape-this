@@ -78,7 +78,11 @@ function buttonClicks(){
     .then(res => {
       console.log(res);
     })
-  })
+  });
+
+  $('#sidebarCollapse').on('click', function () {//sidebar collapse
+    $('#side-menu').toggleClass('active');
+  });
 
 }//end button clicks
 
@@ -123,7 +127,5 @@ $(document).ready(function(){
  buttonClicks();
  scrollImage();
 
- $('#sidebarCollapse').on('click', function () {
-  $('#side-menu').toggleClass('active');
-});
+ 
 })//end doc ready

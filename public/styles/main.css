@@ -31,6 +31,9 @@ body {
   background-position: center;
 }
 
+/* sidebar menu
+********************* */
+
 #side-menu{
   float: left;
   background-color: rgb(128, 128, 128, .75);
@@ -42,12 +45,11 @@ body {
 }
 /* Shrinking the side-menu from 250px to 80px and center aligining its content*/
 #side-menu.active {
-  min-width: 80px;
-  max-width: 80px;
+  width: 80px;
   text-align: center;
-  transition: all 0.3s;
 }
-#sidebarCollapse{
+
+#sidebarCollapse{ /*sidebard collapse button*/
   position: sticky;
   top: .2rem;
 
@@ -56,6 +58,13 @@ body {
 #side-menu .side-menu-header strong {
   display: none;
 }
+
+#side-menu.active .side-menu-header strong {
+  display: block;
+  text-align: center;
+  padding-top: .6rem;
+}
+
 #side-menu .side-menu-header h3 {
   padding-top: .5rem;
   text-align: center;
@@ -64,16 +73,13 @@ body {
 #side-menu.active .side-menu-header h3 {
   display: none;
 }
-#side-menu.active .side-menu-header strong {
-  display: block;
-  text-align: center;
-  padding-top: .6rem;
-}
+
 
 #side-menu.active a {
   text-align: center;
   transition: all 0.3s;
 }
+
 #side-menu.active span {
   display:none;
 }
@@ -81,6 +87,13 @@ body {
 #side-menu.active button {
   text-align: center;
 }
+
+/* ***********************
+end sidebar */
+
+/* card style
+*********************** */
+
 .card{
   background-color: rgba(255, 255, 255, 0.65);
 }
@@ -95,6 +108,9 @@ body {
 .card-body p {
   display: inline;
 }
+
+/* *******************
+end card style */
 
 /* ************
 Note Modal
@@ -115,17 +131,17 @@ Note Modal
 /* ************ */
 
 
-/* ************
-Saved Items
+
+/* Saved Items
 ************ */
   .save-page-buttons button {
     margin-left: 0.2rem;
   }
 
-/* Saved Items */
 /* ************ */
+/* Saved Items */
 
-
+/* media query for side bar */
 @media (max-width: 768px) {
   /* 80px and its content aligned to centre. Pushing it off the screen with the
      negative left margin
