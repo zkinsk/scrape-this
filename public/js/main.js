@@ -82,6 +82,11 @@ function buttonClicks(){
 
   $('#sidebarCollapse').on('click', function () {//sidebar collapse
     $('#side-menu').toggleClass('active');
+    let menuState = sessionStorage.getItem("menuState")
+    console.log("btn: " + menuState);
+    menuState = menuState === 'true';
+    menuState = menuState? 'false' : 'true'
+    sessionStorage.setItem("menuState", menuState);
   });
 
 }//end button clicks
@@ -121,11 +126,20 @@ function scrollImage(){
       $('.button-1').removeClass("d-none");
      }
     })
-}
+};
+
+function menuStateOnLoad(){
+  let menuState = sessionStorage.getItem("menuState")
+  menuState = menuState === 'true';
+  console.log("on load: " + menuState);
+  menuState?  $('#side-menu').addClass('active'):  $('#side-menu').removeClass('active')
+};
 
 $(document).ready(function(){
  buttonClicks();
  scrollImage();
+ menuStateOnLoad();
+
 
  
 })//end doc ready
