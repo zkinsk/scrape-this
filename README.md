@@ -2,7 +2,7 @@
 - nodeJs/express app that uses Cherio and Axio to srape info from the site [SingleTracks](https://www.singletracks.com/)
 - Stores selected info in a database for persistent retreival
 - Allows for comments/notes to be added to saved articles that are then accessible by everyone who visits the site
-- Collapsable menu bar for more viewing space and opens up some screen realestate for mobile devices
+- Collapsable menu bar for more viewing space and opens up some screen real estate for mobile devices
 
 **While viewing articles, make sure you scroll down - for a nice effect**
 
