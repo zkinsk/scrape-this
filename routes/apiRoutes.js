@@ -15,6 +15,7 @@ router.get("/article/:id", function(req, res) {//get article by id along with it
 });
 
 router.delete("/articles", (req,res) =>{
+  console.log("deleting")
   db.Article.find({"favorite": false},{"artId":1, "_id": 0})
   .then(artIds => {
     let idArr = artIds.map(id => id.artId)

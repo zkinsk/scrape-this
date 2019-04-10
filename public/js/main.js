@@ -1,6 +1,7 @@
 
 function buttonClicks(){
-  $(".save-button").click(function(){
+  // $(".save-button").click(function(){
+  $(".save-button").on("click", function(){
     artId = $(this).data("artid");
     favorite = $(this).data("favorite")
     // console.log(favorite);
@@ -13,7 +14,8 @@ function buttonClicks(){
     });//end of ajax promise
   });
 
-  $("#scrape-button").click(function(){
+  $("#side-menu").on("click", "#scrape-button", function(){
+    console.log("scrape")
     $.ajax({
       url: "/scrape",
       type: 'GET'
@@ -23,7 +25,8 @@ function buttonClicks(){
     })
   });//end scrape button
 
-  $("#clear-articles-button").click(function(){
+  $("#side-menu").on("click", "#clear-articles-button", function(){
+    console.log("delete")
     $.ajax({
       url: '/api/articles',
       type: "DELETE"
@@ -113,19 +116,16 @@ function drawNotes(notes){
 
 function scrollImage(){
   $(window).scroll(function() {
-    if ($(this).scrollTop()>240)
-     {
+    if ($(this).scrollTop()>240){
       $('#imgBack').fadeIn("fast");
       $('.button-1').addClass("d-none");
       $('.button-2').removeClass("d-none");
-     }
-    else
-     {
+    }else{
       $('#imgBack').fadeOut("fast");
       $('.button-2').addClass("d-none");
       $('.button-1').removeClass("d-none");
-     }
-    })
+    }
+  })
 };
 
 function menuStateOnLoad(){ //remembers menu state on page refresh due to handlebars refresh when db changes
