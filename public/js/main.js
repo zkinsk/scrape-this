@@ -14,7 +14,7 @@ function buttonClicks(){
     });//end of ajax promise
   });
 
-  $("#side-menu").on("click", "#scrape-button", function(){
+  $("#side-menu").on("click", ".scrape-button", function(){
     console.log("scrape")
     $.ajax({
       url: "/scrape",
@@ -25,7 +25,7 @@ function buttonClicks(){
     })
   });//end scrape button
 
-  $("#side-menu").on("click", "#clear-articles-button", function(){
+  $("#side-menu").on("click", ".clear-articles-button", function(){
     console.log("delete")
     $.ajax({
       url: '/api/articles',

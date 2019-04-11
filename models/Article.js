@@ -10,10 +10,10 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
-  artId: {
-    type: String,
-    required: true
-  },
+  // artId: {
+  //   type: String,
+  //   required: true
+  // },
   text: {
     type: String,
     required: false
