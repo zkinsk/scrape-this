@@ -6,7 +6,7 @@ var db = require("../models");
 
 // Route for grabbing a specific Article by id, populate it with it's notes
 router.get("/article/:id", function(req, res) {//get article by id along with it's notes
-  db.Article.findOne({"artId":req.params.id}).populate("notes").then(function(oneArticle){
+  db.Article.findOne({"_id":req.params.id}).populate("notes").then(function(oneArticle){
     res.json(oneArticle)
   })
   .catch(function (err){
@@ -16,7 +16,7 @@ router.get("/article/:id", function(req, res) {//get article by id along with it
 
 router.delete("/articles", (req,res) =>{
   console.log("deleting")
-  db.Article.find({"favorite": false},{"artId":1, "_id": 0})
+  db.Article.find({"favorite": false},{"_id":1})
   .then(artIds => {
     let idArr = artIds.map(id => id.artId)
     db.Note.remove({"artId": {$in: idArr} });
@@ -32,14 +32,8 @@ router.delete("/articles", (req,res) =>{
 //route for adding or removing article to favorites list
 router.patch("/articles/favorites/:id/:status", function(req, res){
   let status = req.params.status === "true";
-  db.Article.findOneAndUpdate({'artId': req.params.id}, {$set: {'favorite': status}})
+  db.Article.findOneAndUpdate({'_id': req.params.id}, {$set: {'favorite': status}})
   .then(faveResponse => {
-    // console.log("status: " + status);
-    // if (!status){
-    //   console.log("deleting");
-    //   db.Note.deleteMany({'artId': req.params.id})
-    //   .then(deleted => console.log(deleted));
-    // }
     res.end();
   })
   .catch(function(err) {
@@ -53,7 +47,7 @@ router.post("/note/:artid", function(req, res) {
   db.Note.create(req.body)
   .then(function(dbNote) {
     return db.Article.findOneAndUpdate(
-      {'artId': req.params.artid},  
+      {'_id': req.params.artid},  
       { $push: { notes: dbNote._id } }, 
       { new: true });
   })
@@ -69,7 +63,7 @@ router.post("/note/:artid", function(req, res) {
 // Route for deleting a note from an article
 router.delete("/note/:artid/:noteid", function(req, res){
   db.Article.update(
-    {'artId': req.params.artid},
+    {'_id': req.params.artid},
     { $pull: { notes: req.params.noteid } }
   )
   .then(function(noteRemove){
