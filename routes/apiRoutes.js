@@ -20,11 +20,9 @@ router.delete("/articles", (req,res) =>{
   .then(artIds => {
     let idArr = artIds.map(id => id.artId)
     db.Note.remove({"artId": {$in: idArr} });
-    // console.log(artIds);
   })
   db.Article.deleteMany({"favorite": false})
-  .then(artResponse =>{
-    // console.log(artResponse);
+  .then( () =>{
     res.end();
   })
 });//
@@ -33,7 +31,7 @@ router.delete("/articles", (req,res) =>{
 router.patch("/articles/favorites/:id/:status", function(req, res){
   let status = req.params.status === "true";
   db.Article.findOneAndUpdate({'_id': req.params.id}, {$set: {'favorite': status}})
-  .then(faveResponse => {
+  .then( () => {
     res.end();
   })
   .catch(function(err) {
@@ -42,13 +40,13 @@ router.patch("/articles/favorites/:id/:status", function(req, res){
 });//end of favorites patch
 
 // Route for adding a new Article Note
-router.post("/note/:artid", function(req, res) {
+router.post("/note/:art_id", function(req, res) {
   // console.log(req.body);
   db.Note.create(req.body)
   .then(function(dbNote) {
     return db.Article.findOneAndUpdate(
-      {'_id': req.params.artid},  
-      { $push: { notes: dbNote._id } }, 
+      {'_id': req.params.art_id},
+      { $push: { notes: dbNote._id } },
       { new: true });
   })
   .then(function(dbArticle) {
@@ -61,13 +59,13 @@ router.post("/note/:artid", function(req, res) {
 });//end fo saving note
 
 // Route for deleting a note from an article
-router.delete("/note/:artid/:noteid", function(req, res){
+router.delete("/note/:art_id/:note_id", function(req, res){
   db.Article.update(
-    {'_id': req.params.artid},
-    { $pull: { notes: req.params.noteid } }
+    {'_id': req.params.art_id},
+    { $pull: { notes: req.params.note_id } }
   )
   .then(function(noteRemove){
-    db.Note.deleteOne({'_id': req.params.noteid})
+    db.Note.deleteOne({'_id': req.params.note_id})
     .then(function(noteDelete){
       console.log("noteRemove: ", noteRemove)
       console.log("noteDelete: ", noteDelete);
